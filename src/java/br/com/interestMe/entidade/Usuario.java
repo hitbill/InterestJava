@@ -32,13 +32,13 @@ public class Usuario {
     @JoinColumn(name="idSexo")
     @NotNull(message="Informe o sexo:")
     private Sexo sexo;
-   /*
+   
    @OneToMany(mappedBy="idInteressado")
     private List<Interacao> interessados;
    
    @OneToMany(mappedBy="idInteressante")
     private List<Interacao> interessantes;
-    */
+    
    
    @OneToMany(mappedBy="usuario")
     private List<Foto> fotos;

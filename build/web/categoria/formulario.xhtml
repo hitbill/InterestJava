@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+   
+    <h:form id="formularioCategoria">
+        <p:growl />
+        <p:panel header="Categoria">
+            
+            <h:inputHidden value="#{categoriaController.categoria.idCategoria}" />
+            
+            <h:outputLabel value="Nome da Categoria:" />
+            <p:inputText value="#{categoriaController.categoria.descricao}" />
+            
+            <p:commandButton value="Salvar"
+                             actionListener="#{categoriaController.salvar()}"
+                             update=":tabelaCategoria,@form"/>
+        </p:panel>
+        
+    </h:form>
+    
+    
+</html>

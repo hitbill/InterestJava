@@ -25,16 +25,16 @@ public class Interacao {
     @Temporal(TemporalType.TIME)
     private Date dataHora;
     
-  /*@ManyToOne
-    @JoinColumn(name="idUsuario")
+  @ManyToOne
+    @JoinColumn(name="idIteressado", referencedColumnName="idUsuario")
     @NotNull(message="Informe o usuario 1:")
     private Usuario idInteressado;
   
   @ManyToOne
-    @JoinColumn(name="idUsuario")
+    @JoinColumn(name="idInteressante", referencedColumnName="idUsuario")
     @NotNull(message="Informe o usuario 2:")
     private Usuario idInteressante;
-*/
+
    @ManyToOne
     @JoinColumn(name="idTipoInteracao")
     @NotNull(message="Informe o tipo de InTERACÃO:")
