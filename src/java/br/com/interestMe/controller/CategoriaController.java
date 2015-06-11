@@ -1,4 +1,3 @@
-
 package br.com.interestMe.controller;
 
 import br.com.interestMe.entidade.Categoria;
@@ -12,6 +11,7 @@ import javax.inject.Named;
 @Named("categoriaController")
 @RequestScoped
 public class CategoriaController {
+    
     @EJB
     private ICategoriaService categoriaService;
     
@@ -74,10 +74,9 @@ public class CategoriaController {
         return categoriaSelecionada;
     }
 
-    public void setCategoriaSelecionada(Categoria categoriaSelecionado) {
-        this.categoriaSelecionada = categoriaSelecionado;
+    public void setCategoriaSelecionada(Categoria categoriaSelecionada) {
+        this.categoriaSelecionada = categoriaSelecionada;
     }
 
-    
     
 }

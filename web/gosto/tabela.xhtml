@@ -2,44 +2,48 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
 
-    <h:form id="tabelaCategoria">
+    <h:form id="tabelaGosto">
         
         <p:contextMenu for="tabela">
             
             <p:menuitem value="Editar"
-                        actionListener="#{categoriaController.editar()}"
-                        update=":formularioCategoria"/>
+                        actionListener="#{gostoController.editar()}"
+                        update=":formularioGosto"/>
             
             <p:menuitem value="Excluir"
-                        actionListener="#{categoriaController.excluir()}"
+                        actionListener="#{gostoController.excluir()}"
                         update="@form"/>
             
         </p:contextMenu>
         
         <p:growl/>
         
-         <p:panel header="Categorias Cadastradas:">
+         <p:panel header="Gostos Cadastrados:">
 
             <p:dataTable 
-                value="#{categoriaController.listar()}"
-                var="c"
-                emptyMessage="Nenhum curso cadastrado."
+                value="#{gostoController.listar()}"
+                var="g"
+                emptyMessage="Nenhum gosto cadastrado."
                 paginator="true"
                 rows="10"
                 selectionMode="single"
-                selection="#{categoriaController.categoriaSelecionada}"
-                rowKey="#{c.idCategoria}"
+                selection="#{gostoController.gostoSelecionado}"
+                rowKey="#{g.idGosto}"
                 id="tabela">
 
                 <p:column headerText="ID">
-                    #{c.idCategoria}
+                    #{g.idGosto}
                 </p:column>
 
                 <p:column 
                     headerText="Nome">
-                    #{c.descricao}
+                    #{g.descricao}
                 </p:column>
-
+                
+                <p:column headerText="Categoria">
+                    #{g.categoria.descricao}
+                </p:column>
+                
 
             </p:dataTable>
 

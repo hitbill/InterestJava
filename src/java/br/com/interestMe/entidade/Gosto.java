@@ -14,7 +14,7 @@ public class Gosto {
     
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idGosto;
+    private Short idGosto;
     
     @NotNull(message="teste")
     private String descricao;
@@ -24,11 +24,11 @@ public class Gosto {
     @NotNull(message="Informe a categoria:")
     private Categoria categoria;
 
-    public int getIdGosto() {
+    public Short getIdGosto() {
         return idGosto;
     }
 
-    public void setIdGosto(int idGosto) {
+    public void setIdGosto(Short idGosto) {
         this.idGosto = idGosto;
     }
 
@@ -46,28 +46,6 @@ public class Gosto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + this.idGosto;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Gosto other = (Gosto) obj;
-        if (this.idGosto != other.idGosto) {
-            return false;
-        }
-        return true;
     }
     
 }

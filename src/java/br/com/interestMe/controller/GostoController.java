@@ -12,20 +12,20 @@ import javax.inject.Named;
 @RequestScoped
 public class GostoController {
     @EJB
-    private IGostoService GostoService;
+    private IGostoService gostoService;
     
-    private Gosto Gosto;
-    private Gosto GostoSelecionado;
+    private Gosto gosto;
+    private Gosto gostoSelecionado;
     
     public GostoController(){
-        Gosto = new Gosto();
+        gosto = new Gosto();
     }
     
     public void salvar(){
         
-        String erro = GostoService.salvar(Gosto);
+        String erro = gostoService.salvar(gosto);
         if(erro == null){ 
-            Gosto = new Gosto();
+            gosto = new Gosto();
             MensagemUtil.addMensagemInfo("Salvo com sucesso!");
         }else{
             MensagemUtil.addMensagemInfo("Erro ao salvar: " + erro);
@@ -33,22 +33,47 @@ public class GostoController {
     }
    
     public void editar(){
-        Gosto = GostoSelecionado;
+        gosto = gostoSelecionado;
     }
     
     public void excluir(){
         
-        String erro =GostoService
-                .excluir(GostoSelecionado.getIdGosto());
+        String erro =gostoService
+                .excluir(gostoSelecionado.getIdGosto());
         
         if(erro == null){ //Nao houve erros
-            Gosto = new Gosto();
+            gosto = new Gosto();
             MensagemUtil.addMensagemInfo("Excluido com sucesso!");
         }else{
             MensagemUtil.addMensagemInfo("Erro ao excluir: " + erro);
         }
     }
     public List<Gosto> listar(){
-        return GostoService.todos();
+        return gostoService.todos();
     }
+
+    public IGostoService getGostoService() {
+        return gostoService;
+    }
+
+    public void setGostoService(IGostoService gostoService) {
+        this.gostoService = gostoService;
+    }
+
+    public Gosto getGosto() {
+        return gosto;
+    }
+
+    public void setGosto(Gosto gosto) {
+        this.gosto = gosto;
+    }
+
+    public Gosto getGostoSelecionado() {
+        return gostoSelecionado;
+    }
+
+    public void setGostoSelecionado(Gosto gostoSelecionado) {
+        this.gostoSelecionado = gostoSelecionado;
+    }
+    
 }

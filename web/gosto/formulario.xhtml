@@ -1,0 +1,57 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    
+    <h:form id="formularioGosto">
+        
+        <p:growl />
+        
+        <p:panel header="Gosto">
+            
+            <h:inputHidden 
+                value="#{gostoController.gosto.idGosto}" />
+            
+            
+            <h:panelGrid columns="2">
+                
+                <h:outputLabel  value="Descrição:" />
+                <p:inputText 
+                    value="#{gostoController.gosto.descricao}" />
+                
+                
+                <h:outputLabel value="Categoria:" />
+                
+                <p:selectOneMenu 
+                    value="#{gostoController.gosto.categoria}"
+                    converter="categoriaConverter">
+                    
+                    <f:selectItem 
+                        itemLabel="Selecione uma categoria"
+                        itemValue=""/>
+                    
+                    <f:selectItems 
+                        value="#{categoriaController.listar()}"
+                        var="m"
+                        itemLabel="#{m.descricao}"
+                        itemValue="#{m}"/>
+                    
+                </p:selectOneMenu>
+                
+            </h:panelGrid>
+            
+            <p:commandButton value="Salvar"
+                   actionListener="#{gostoController.salvar()}"
+                   update="@form,:tabelaGosto"
+                   icon="ui-icon-check"/>
+            
+        </p:panel>
+        
+    </h:form>
+    
+    
+    
+   
+</html>

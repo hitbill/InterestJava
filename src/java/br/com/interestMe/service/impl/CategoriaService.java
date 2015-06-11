@@ -5,7 +5,7 @@ import br.com.interestMe.service.ICategoriaService;
 import javax.ejb.Stateless;
 
 @Stateless
-public class CategoriaService extends GenericService<Categoria, Integer>
+public class CategoriaService extends GenericService<Categoria, Short>
         implements ICategoriaService {
     
     public CategoriaService() {
