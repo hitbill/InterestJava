@@ -37,7 +37,7 @@ public class InteracaoController {
     public void excluir(){
         
         String erro = InteracaoService
-                .excluir((InteracaoSelecionada.getIdInteresado())&&(InteracaoSelecionada.getIdInteresante());
+                .excluir(InteracaoSelecionada.getIdInteracao());
         
         if(erro == null){ //Nao houve erros
             Interacao = new Interacao();

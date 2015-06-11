@@ -16,7 +16,7 @@ public class Sexo {
     
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private char idSexo;
+    private int idSexo;
     
     @NotNull(message="informe sexo")
     private String descricao;
@@ -24,11 +24,11 @@ public class Sexo {
     @OneToMany(mappedBy="sexo")
     private List<Usuario> usuarios;
 
-    public char getIdSexo() {
+    public int getIdSexo() {
         return idSexo;
     }
 
-    public void setIdSexo(char idSexo) {
+    public void setIdSexo(int idSexo) {
         this.idSexo = idSexo;
     }
 
