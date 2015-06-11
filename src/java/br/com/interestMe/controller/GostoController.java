@@ -1,4 +1,4 @@
-package br.com.interestMe.controller;
+ package br.com.interestMe.controller;
 
 import br.com.interestMe.entidade.Gosto;
 import br.com.interestMe.service.IGostoService;

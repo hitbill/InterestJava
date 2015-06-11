@@ -1,7 +1,7 @@
 package br.com.interestMe.controller;
 
 import br.com.interestMe.entidade.TipoInteracao;
-import br.com.interestMe.service.ITipointeracaoService;
+import br.com.interestMe.service.ITipoInteracaoService;
 import br.com.interestMe.util.MensagemUtil;
 import java.util.List;
 import javax.ejb.EJB;
@@ -12,18 +12,21 @@ import javax.inject.Named;
 @RequestScoped
 public class TipoInteracaoController {
     @EJB
-    private ITipointeracaoService TipoInteracaoService;
+    private ITipoInteracaoService TipoInteracaoService;
     
-    private TipoInteracao TipoInteracao;
-    private TipoInteracao TipoInteracaoSelecionado;
-    
-    private List<TipoInteracao> TipoInteracoes;
+    private TipoInteracao tipoInteracao;
+    private TipoInteracao tipoInteracaoSelecionado;
+     
+    public TipoInteracaoController(){
+        tipoInteracao = new TipoInteracao();
+    }
+    private List<TipoInteracao> tipoInteracoes;
     
     public void salvar(){
         
-        String erro = TipoInteracaoService.salvar(TipoInteracao);
+        String erro = TipoInteracaoService.salvar(tipoInteracao);
         if(erro == null){ 
-            TipoInteracao = new TipoInteracao();
+            tipoInteracao = new TipoInteracao();
             MensagemUtil.addMensagemInfo("Salvo com sucesso!");
         }else{
             MensagemUtil.addMensagemInfo("Erro ao salvar: " + erro);
@@ -31,16 +34,16 @@ public class TipoInteracaoController {
     }
     
     public void editar(){
-        TipoInteracao = TipoInteracaoSelecionado;
+        tipoInteracao = tipoInteracaoSelecionado;
     }
     
     public void excluir(){
         
         String erro = TipoInteracaoService
-                .excluir(TipoInteracaoSelecionado.getIdTipoInteracao());
+                .excluir(tipoInteracaoSelecionado.getIdTipoInteracao());
         
         if(erro == null){ //Nao houve erros
-            TipoInteracao = new TipoInteracao();
+            tipoInteracao = new TipoInteracao();
             MensagemUtil.addMensagemInfo("Excluido com sucesso!");
         }else{
             MensagemUtil.addMensagemInfo("Erro ao excluir: " + erro);
@@ -50,4 +53,38 @@ public class TipoInteracaoController {
     public List<TipoInteracao> listar(){
         return TipoInteracaoService.todos();
     }
+
+    public ITipoInteracaoService getTipoInteracaoService() {
+        return TipoInteracaoService;
+    }
+
+    public void setTipoInteracaoService(ITipoInteracaoService TipoInteracaoService) {
+        this.TipoInteracaoService = TipoInteracaoService;
+    }
+
+    public TipoInteracao getTipoInteracao() {
+        return tipoInteracao;
+    }
+
+    public void setTipoInteracao(TipoInteracao tipoInteracao) {
+        this.tipoInteracao = tipoInteracao;
+    }
+
+    public TipoInteracao getTipoInteracaoSelecionado() {
+        return tipoInteracaoSelecionado;
+    }
+
+    public void setTipoInteracaoSelecionado(TipoInteracao tipoInteracaoSelecionado) {
+        this.tipoInteracaoSelecionado = tipoInteracaoSelecionado;
+    }
+
+    public List<TipoInteracao> getTipoInteracoes() {
+        return tipoInteracoes;
+    }
+
+    public void setTipoInteracoes(List<TipoInteracao> tipoInteracoes) {
+        this.tipoInteracoes = tipoInteracoes;
+    }
+
+   
 }

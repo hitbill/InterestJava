@@ -2,18 +2,15 @@ package br.com.interestMe.service.impl;
 
 
 import br.com.interestMe.entidade.TipoInteracao;
-import br.com.interestMe.service.ITipointeracaoService;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import br.com.interestMe.service.ITipoInteracaoService;
+import javax.ejb.Stateless;
 
-
-public class TipointeracaoService extends GenericService<TipoInteracao, Integer> implements ITipointeracaoService{
-
-    @PersistenceContext
-    private EntityManager em;
+@Stateless
+public class TipoInteracaoService extends GenericService<TipoInteracao, Integer>
+        implements ITipoInteracaoService {
     
-    public TipointeracaoService(Class persistentClass) {
-        super(persistentClass);
+    public TipoInteracaoService() {
+        super(TipoInteracao.class);
     }
     
 }

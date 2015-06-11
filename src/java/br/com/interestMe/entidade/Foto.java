@@ -19,6 +19,8 @@ public class Foto {
     //CAMINHO REFERENTE A URL DA FOTO
     private String caminho;
     
+    
+    
   @ManyToOne
     @JoinColumn(name="idUsuario")
     @NotNull(message="Informe o usuario:")

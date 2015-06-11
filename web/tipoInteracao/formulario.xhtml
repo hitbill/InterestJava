@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+   
+    <h:form id="formularioTipoInteracao">
+        <p:growl />
+        <p:panel header="TipoInteracao">
+            
+            <h:inputHidden value="#{TipoInteracaoController.tipoInteracao.idTipoInteracao}" />
+            
+            <h:outputLabel value="Nome da TipoInteracao:" />
+            <p:inputText value="#{TipoInteracaoController.tipoInteracao.descricao}" />
+            
+            <p:commandButton value="Salvar"
+                             actionListener="#{TipoInteracaoController.salvar()}"
+                             update=":tabelaTipoInteracao,@form"/>
+        </p:panel>
+        
+    </h:form>
+    
+    
+</html>

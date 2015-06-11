@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class TipoInteracao {
 
-    @Id
+    @Id 
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idTipoInteracao;
     
@@ -40,10 +40,18 @@ public class TipoInteracao {
         this.descricao = descricao;
     }
 
+    public List<Interacao> getInteracoes() {
+        return interacoes;
+    }
+
+    public void setInteracoes(List<Interacao> interacoes) {
+        this.interacoes = interacoes;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + this.idTipoInteracao;
+        int hash = 5;
+        hash = 73 * hash + this.idTipoInteracao;
         return hash;
     }
 
@@ -62,13 +70,6 @@ public class TipoInteracao {
         return true;
     }
 
-    public List<Interacao> getInteracoes() {
-        return interacoes;
-    }
-
-    public void setInteracoes(List<Interacao> interacoes) {
-        this.interacoes = interacoes;
-    }
-    
+   
     
 }

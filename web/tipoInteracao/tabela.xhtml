@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:form id="tabelaTipoInteracao">
+        
+        <p:contextMenu for="tabela">
+            
+            <p:menuitem value="Editar"
+                        actionListener="#{TipoInteracaoController.editar()}"
+                        update=":formularioTipoInteracao"/>
+            
+            <p:menuitem value="Excluir"
+                        actionListener="#{TipoInteracaoController.excluir()}"
+                        update="@form"/>
+            
+        </p:contextMenu>
+        
+        <p:growl/>
+        
+         <p:panel header="TipoInteracao Cadastradas:">
+
+            <p:dataTable 
+                value="#{TipoInteracaoController.listar()}"
+                var="c"
+                emptyMessage="Nenhum curso cadastrado."
+                paginator="true"
+                rows="10"
+                selectionMode="single"
+                selection="#{TipoInteracaoController.tipoInteracaoSelecionado}"
+                rowKey="#{c.idTipoInteracao}"
+                id="tabela">
+
+                <p:column headerText="ID">
+                    #{c.idTipoInteracao}
+                </p:column>
+
+                <p:column 
+                    headerText="Nome">
+                    #{c.descricao}
+                </p:column>
+
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+    
+   
+
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   
+    <h:head>
+        <title>Java Web</title>
+        
+<style type="text/css">
+
+            .ui-layout-north {
+
+                z-index:20 !important;
+
+                overflow:visible !important;
+
+            }
+
+            .ui-layout-north .ui-layout-unit-content {
+
+                overflow:visible !important;
+
+            }
+
+</style>
+    </h:head>
+    
+    <h:body>
+        
+        <p:ajaxStatus 
+            onstart= "statusDialog.show();"
+            onsuccess="statusDialog.hide();"/>
+        
+        <p:dialog modal="true"
+                  draggable="false"
+                  closable="false"
+                  resizable="false"
+                  header="Carregando"
+                  widgetVar="statusDialog">
+            
+            <p:graphicImage 
+                value="/conteudo/imagem/ajaxloadingbar.gif"/>
+        </p:dialog>
+        <p:layout fullPage="true" >
+            
+            <p:layoutUnit position="north"
+                size="100">
+            </p:layoutUnit>
+            
+            
+            <p:layoutUnit position="south"
+                          size="75">
+            </p:layoutUnit>
+            
+            
+            <p:layoutUnit position="west"
+                          size="200"
+                          header="Menu"
+                          collapsible="true"
+                          >
+                
+                <h:form>
+                        <p:menubar >
+                        <p:submenu label="Cadastro">
+                            <p:menuitem value="Categoria" url="/categoria/index.jsf" />
+                            <p:menuitem value="Gosto" url="/gosto/index.jsf" />
+                            <p:menuitem value="Foto" url="/foto/index.jsf" />
+                            <p:menuitem value="Tipo de Interação" url="/tipoInteracao/index.jsf" />
+                            <p:menuitem value="Aulas" url="/turmaProfessor/index.jsf" />
+                        </p:submenu>
+
+                        </p:menubar>
+                            
+                    </h:form>
+                
+            </p:layoutUnit>
+            
+            <p:layoutUnit position="center">
+                <ui:insert name="conteudo" />
+            </p:layoutUnit>
+            
+        </p:layout>
+        
+        
+        
+    </h:body>
+    
+</html>

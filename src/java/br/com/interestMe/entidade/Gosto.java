@@ -47,5 +47,27 @@ public class Gosto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + (this.idGosto != null ? this.idGosto.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Gosto other = (Gosto) obj;
+        if (this.idGosto != other.idGosto && (this.idGosto == null || !this.idGosto.equals(other.idGosto))) {
+            return false;
+        }
+        return true;
+    }
     
 }

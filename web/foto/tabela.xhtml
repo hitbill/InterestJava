@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:form id="tabelaFoto">
+        
+        <p:contextMenu for="tabela">
+            
+            <p:menuitem value="Editar"
+                        actionListener="#{fotoController.editar()}"
+                        update=":formularioFoto"/>
+            
+            <p:menuitem value="Excluir"
+                        actionListener="#{fotoController.excluir()}"
+                        update="@form"/>
+            
+        </p:contextMenu>
+        
+        <p:growl/>
+        
+         <p:panel header="Fotos Cadastrados:">
+
+            <p:dataTable 
+                value="#{fotoController.listar()}"
+                var="f"
+                emptyMessage="Nenhum foto cadastrado."
+                paginator="true"
+                rows="10"
+                selectionMode="single"
+                selection="#{fotoController.fotoSelecionadas}"
+                rowKey="#{f.idFoto}"
+                id="tabela">
+
+                <p:column headerText="ID">
+                    #{f.idFoto}
+                </p:column>
+
+                <p:column 
+                    headerText="Caminho">
+                    #{f.caminho}
+                </p:column>
+                
+                <p:column headerText="Categoria">
+                    #{f.usuario.nome}
+                </p:column>
+                
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+    
+   
+
+</html>

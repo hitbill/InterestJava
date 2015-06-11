@@ -1,0 +1,57 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    
+    <h:form id="formularioFoto">
+        
+        <p:growl />
+        
+        <p:panel header="Foto">
+            
+            <h:inputHidden 
+                value="#{fotoController.foto.idFoto}" />
+            
+            
+            <h:panelGrid columns="2">
+                
+                <h:outputLabel  value="Descrição:" />
+                <p:inputText 
+                    value="#{fotoController.foto.caminho}" />
+                
+                
+                <h:outputLabel value="Usuario:" />
+                
+                <p:selectOneMenu 
+                    value="#{fotoController.foto.usuario}"
+                    converter="usuarioConverter">
+                    
+                    <f:selectItem 
+                        itemLabel="Selecione um usuario"
+                        itemValue=""/>
+                    
+                    <f:selectItems 
+                        value="#{usuarioController.listar()}"
+                        var="m"
+                        itemLabel="#{m.nome}"
+                        itemValue="#{m}"/>
+                    
+                </p:selectOneMenu>
+                
+            </h:panelGrid>
+            
+            <p:commandButton value="Salvar"
+                   actionListener="#{fotoController.salvar()}"
+                   update="@form,:tabelaFoto"
+                   icon="ui-icon-check"/>
+            
+        </p:panel>
+        
+    </h:form>
+    
+    
+    
+   
+</html>

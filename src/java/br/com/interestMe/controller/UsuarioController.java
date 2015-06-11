@@ -8,22 +8,22 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-@Named("UsuarioController")
+@Named("usuarioController")
 @RequestScoped
 public class UsuarioController {
     @EJB
     private IUsuarioService UsuarioService;
     
-    private Usuario Usuario;
-    private Usuario UsuarioSelecionado;
+    private Usuario usuario;
+    private Usuario usuarioSelecionado;
     
-    private List<Usuario> Usuarios;
+    private List<Usuario> usuarios;
     
     public void salvar(){
         
-        String erro = UsuarioService.salvar(Usuario);
+        String erro = UsuarioService.salvar(usuario);
         if(erro == null){ 
-            Usuario = new Usuario();
+            usuario = new Usuario();
             MensagemUtil.addMensagemInfo("Salvo com sucesso!");
         }else{
             MensagemUtil.addMensagemInfo("Erro ao salvar: " + erro);
@@ -31,16 +31,16 @@ public class UsuarioController {
     }
     
     public void editar(){
-        Usuario = UsuarioSelecionado;
+        usuario = usuarioSelecionado;
     }
     
     public void excluir(){
         
         String erro = UsuarioService
-                .excluir(UsuarioSelecionado.getIdUsuario());
+                .excluir(usuarioSelecionado.getIdUsuario());
         
         if(erro == null){ //Nao houve erros
-            Usuario = new Usuario();
+            usuario = new Usuario();
             MensagemUtil.addMensagemInfo("Excluido com sucesso!");
         }else{
             MensagemUtil.addMensagemInfo("Erro ao excluir: " + erro);
@@ -50,7 +50,7 @@ public class UsuarioController {
     public List<Usuario> listar(){
         return UsuarioService.todos();
     }
-    
+
     public IUsuarioService getUsuarioService() {
         return UsuarioService;
     }
@@ -60,26 +60,28 @@ public class UsuarioController {
     }
 
     public Usuario getUsuario() {
-        return Usuario;
+        return usuario;
     }
 
-    public void setUsuario(Usuario Usuario) {
-        this.Usuario = Usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Usuario getUsuarioSelecionado() {
-        return UsuarioSelecionado;
+        return usuarioSelecionado;
     }
 
-    public void setUsuarioSelecionado(Usuario UsuarioSelecionado) {
-        this.UsuarioSelecionado = UsuarioSelecionado;
+    public void setUsuarioSelecionado(Usuario usuarioSelecionado) {
+        this.usuarioSelecionado = usuarioSelecionado;
     }
 
     public List<Usuario> getUsuarios() {
-        return Usuarios;
+        return usuarios;
     }
 
-    public void setUsuarios(List<Usuario> Usuarios) {
-        this.Usuarios = Usuarios;
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
+    
+    
 }
